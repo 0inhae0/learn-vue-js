@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ num }}</p> 
+    <app-header v-on:pass="logText"></app-header>
+    <app-content v-on:increase="increaseNumber"></app-content>
+  </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var appHeader = {
+        template: '<button v-on:click="passEvent">click me</button>',
+        methods: {
+          passEvent: function() { //passEvent를 할 메서드의 이름은 pass Event라는 것
+            this.$emit('pass'); //pass는 이벤트이름
+          }
+        }
+      }
+
+      var appContent = {
+        template: '<button v-on:click="addNumber">add</button>',
+        methods: {
+          addNumber: function() {
+            this.$emit('increase')
+          }
+        }
+      }
+
+      new Vue({
+        el: '#app',
+        components: {
+          'app-header': appHeader,
+          'app-content': appContent
+        },
+        methods: {
+          logText: function() {
+            console.log('hi');  //콘솔에 hi출력
+          },
+          increaseNumber: function() {
+            this.num = this.num + 1   //버튼 누를 때마다 1씩 증가
+          }
+          
+        },
+        data: {
+            num: 10
+        }
+      })  
+    </script>
+</body>
+</html>
