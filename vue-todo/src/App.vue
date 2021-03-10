@@ -16,7 +16,7 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-  data: function() {
+  data: function() {  // @ES6기능@ data() 로 표현해도 ok ':function' 생략가능
     return {
       todoItems: []
     }
@@ -66,7 +66,7 @@ export default {
     }
   },
   components: {
-    //컴포넌트 태그명: 컴포넌트 내용
+    // (하위)컴포넌트 태그명: 컴포넌트 내용
     'TodoHeader': TodoHeader,
     'TodoInput': TodoInput,
     'TodoList': TodoList,
