@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <transition-group name="list" tag="ul">
       <!--텍스트만 중복되지 않으면 이 키가 유일하기 때문에, v-for에 성능을 가속화 시키는 v-bind:key 연결-->
       <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item" class="shadow">
         <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" 
@@ -10,7 +10,7 @@
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
